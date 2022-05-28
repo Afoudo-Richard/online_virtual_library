@@ -11,6 +11,6 @@ admin.site.register(Category)
 admin.site.register(Author)
 admin.site.register(Publisher)
 admin.site.register(Language)
-admin.site.register(BookDocumentAssetType)
+admin.site.register(BookDocumentType)
 admin.site.register(Book)
 

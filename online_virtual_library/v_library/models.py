@@ -64,7 +64,7 @@ class Language(models.Model):
     def __str__(self) -> str:
         return self.language
 
-class BookDocumentAssetType(models.Model):
+class BookDocumentType(models.Model):
     doc_type = models.CharField(max_length=300)
 
     def __str__(self) -> str:
@@ -91,7 +91,7 @@ class Book(models.Model):
     publisher = models.ForeignKey(Publisher, on_delete=models.SET_NULL, null=True)
     library = models.ForeignKey(Library, on_delete=models.SET_NULL, null=True)
     Language = models.ForeignKey(Language, on_delete=models.SET_NULL, null=True)
-    doc_type = models.ForeignKey(BookDocumentAssetType, on_delete=models.SET_NULL, null=True)
+    doc_type = models.ForeignKey(BookDocumentType, on_delete=models.SET_NULL, null=True)
     authors = models.ManyToManyField(Author)
 
     
