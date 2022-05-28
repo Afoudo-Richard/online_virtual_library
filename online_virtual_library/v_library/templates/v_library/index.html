@@ -1,0 +1,31 @@
+{% extends 'v_library/root.html' %}
+
+{% block content %}
+{% include 'v_library/includes/auth_links.html' %}
+<div class="container">
+    <h5 class="mt-5">Admin Login Form</h5>
+    <hr>
+</div>
+<div class="d-flex justify-content-center mt-5">
+    <div class="w-25 border p-3">
+        <h3>Login Form</h3>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Email</label>
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Email" name="email">
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Password</label>
+                <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="Password" name="password">
+            </div>
+
+            <div>
+                <button type="submit" class="btn btn-success">Login</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+{% endblock %}

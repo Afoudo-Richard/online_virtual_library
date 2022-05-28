@@ -1,0 +1,41 @@
+{% extends 'v_library/root.html' %}
+
+{% block content %}
+<div class="container">
+    <h5 class="mt-5">Manage Categories</h5>
+    <hr>
+</div>
+<div class="container mt-5">
+    <table class="table_id display" >
+        <thead>
+            <tr>
+                <th>Category</th>
+                <th>Status</th>
+                <th>Date Created</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            {% for category in categories %}
+            <tr>
+                <td>{{category.name}}</td>
+                <td>
+                    {% if category.status == 'Active' %}
+                        <span class="btn bg-success text-white" >{{category.status}}</span>
+                    {% else %}
+                        <span class="btn bg-danger text-white" >{{category.status}}</span>
+                    {% endif %}
+                </td>
+                <td>{{category.date_created}}</td>
+                <td>
+                    <a class="btn btn-primary">Edit</a>
+                    <a class="btn btn-danger">Edit</a>
+                </td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+{% endblock %}
