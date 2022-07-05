@@ -1,0 +1,6 @@
+- work on the user login section -- done
+- Create decorators for user restrictionsm -- done
+- Work on proper book display on admin section --done
+- Work on register user section --done
+- Show student's view pages
+- Show student's borrowed books
