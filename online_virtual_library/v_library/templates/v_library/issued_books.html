@@ -32,8 +32,8 @@
                 <td>{{borrowed_book.date_issued}}</td>
                 <td>{{borrowed_book.return_date}}</td>
                 <td>
-                    {% if book.status == 'Returned' %}
-                        <span class="btn bg-success text-white" >{{borrowed_book.status}}</span>
+                    {% if book.status == 1 %}
+                        <span class="btn btn-success text-white" >{{borrowed_book.status}}</span>
                     {% else %}
                         <span class="btn bg-danger text-white" >{{borrowed_book.status}}</span>
                     {% endif %}
