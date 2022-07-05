@@ -1,0 +1,60 @@
+{% extends 'v_library/root.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="d-flex justify-content-between mt-5">
+        <h5 class="">Add Student</h5>
+    </div>
+
+    <hr>
+</div>
+<div class="container mt-5">
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div>
+            <div>
+                {{form.username.label}}
+            </div>
+            <div>
+                {{form.username}}
+            </div>
+        </div>
+
+        <div class="mt-2">
+            <div>
+                {{form.email.label}}
+            </div>
+            <div>
+                {{form.email}}
+            </div>
+        </div>
+
+        <div class="mt-2">
+            <div>
+                {{form.password1.label}}
+            </div>
+            <div>
+                {{form.password1}}
+            </div>
+        </div>
+
+        <div class="mt-2">
+            <div>
+                {{form.password2.label}}
+            </div>
+            <div>
+                {{form.password2}}
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <button type="submit" class="btn btn-success">Submit</button>
+        </div>
+
+        <div>
+            {{form.errors}}
+        </div>
+
+    </form>
+</div>
+{% endblock %}

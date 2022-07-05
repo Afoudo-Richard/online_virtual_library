@@ -2,7 +2,11 @@
 
 {% block content %}
 <div class="container">
-    <h5 class="mt-5">Manage Categories</h5>
+    <div class="d-flex justify-content-between mt-5">
+        <h5 class="">Manage Categories</h5>
+        <a href="{% url 'add_category' %}" class="btn btn-primary inline-block">Add Category</a>
+    </div>
+    
     <hr>
 </div>
 <div class="container mt-5">
@@ -29,8 +33,8 @@
                 </td>
                 <td>{{category.date_created}}</td>
                 <td>
-                    <a class="btn btn-primary">Edit</a>
-                    <a class="btn btn-danger">Edit</a>
+                    <a href="{% url 'edit_category' category.id %}" class="btn btn-primary">Edit</a>
+                    <a href="{% url 'delete_category' category.id %}" class="btn btn-danger">Delete</a>
                 </td>
             </tr>
             {% endfor %}

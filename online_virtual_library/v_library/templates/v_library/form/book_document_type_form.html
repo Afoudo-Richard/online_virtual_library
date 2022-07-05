@@ -1,0 +1,30 @@
+{% extends 'v_library/root.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="d-flex justify-content-between mt-5">
+        <h5 class="">{{title}} Book/Document Type</h5>
+    </div>
+
+    <hr>
+</div>
+<div class="container mt-5">
+    <form action="" method="POST">
+        {% csrf_token %}
+
+        <div>
+            <div>
+                {{form.doc_type.label}}
+            </div>
+            <div>
+                {{form.doc_type}}
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <button type="submit" class="btn btn-success">Submit</button>
+        </div>
+
+    </form>
+</div>
+{% endblock %}

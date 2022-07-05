@@ -1,0 +1,34 @@
+{% extends 'v_library/root.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="d-flex justify-content-between mt-5">
+        <h5 class="">Manage Book/Document Type</h5>
+        <a href="{% url 'add_book_document_type' %}" class="btn btn-primary inline-block">Add Book/Document Type</a>
+    </div>
+    <hr>
+</div>
+<div class="container mt-5">
+    <table class="table_id display" >
+        <thead>
+            <tr>
+                <th>Document Type</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            {% for book_document_type in book_document_types %}
+            <tr>
+                <td>{{book_document_type.doc_type}}</td>
+                <td>
+                    <a href="{% url 'edit_book_document_type' book_document_type.id %}" class="btn btn-primary">Edit</a>
+                    <a href="{% url 'delete_book_document_type' book_document_type.id %}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+{% endblock %}

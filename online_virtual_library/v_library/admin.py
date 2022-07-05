@@ -13,4 +13,5 @@ admin.site.register(Publisher)
 admin.site.register(Language)
 admin.site.register(BookDocumentType)
 admin.site.register(Book)
+admin.site.register(BorrowedBook)
 

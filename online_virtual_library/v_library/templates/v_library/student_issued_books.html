@@ -1,0 +1,35 @@
+{% extends 'v_library/root.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="d-flex justify-content-between mt-5">
+        <h5 class="">Borrowed Books</h5>
+    </div>
+    
+    <hr>
+</div>
+<div class="container mt-5">
+    <table class="table_id display" >
+        <thead>
+            <tr>
+                <th>Book Title</th>
+                <th>Date Issued</th>
+                <th>Return Date</th>
+                <th>Late Return Fee</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            {% for borrowed_book in borrowed_books %}
+            <tr>
+                <td>{{borrowed_book.book.title}}</td>
+                <td>{{borrowed_book.date_issued}}</td>
+                <td>{{borrowed_book.return_date}}</td>
+                <td>{{borrowed_book.late_return_fee}}</td>
+                
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

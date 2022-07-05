@@ -1,0 +1,35 @@
+{% extends 'v_library/root.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="d-flex justify-content-between mt-5">
+        <h5 class="">Manage Languages</h5>
+        <a href="{% url 'add_language' %}" class="btn btn-primary inline-block">Add language</a>
+    </div>
+    
+    <hr>
+</div>
+<div class="container mt-5">
+    <table class="table_id display" >
+        <thead>
+            <tr>
+                <th>Language</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            {% for language in languages %}
+            <tr>
+                <td>{{language.language}}</td>
+                <td>
+                    <a href="{% url 'edit_language' language.id %}" class="btn btn-primary">Edit</a>
+                    <a href="{% url 'delete_language' language.id %}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+{% endblock %}

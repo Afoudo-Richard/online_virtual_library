@@ -1,6 +1,6 @@
 
 from django.db import models
-
+from django.contrib.auth.models import User
 # Create your models here.
 
 
@@ -12,27 +12,6 @@ class Institution(models.Model):
 
     def __str__(self) -> str:
         return self.name
-
-# class UserType(models.Model):
-#     type = models.CharField(max_length=200)
-
-#     def __str__(self) -> str:
-#         return self.type
-
-# class User(models.Model):
-#     institution = models.ForeignKey(Institution, on_delete=models.SET_NULL, null=True)
-#     firstname = models.CharField(max_length=200)
-#     lastname = models.CharField(max_length=200)
-#     email = models.CharField(max_length=200)
-#     address = models.CharField(max_length=200)
-#     password = models.CharField(max_length=200)
-#     user_type = models.ManyToManyField(UserType)
-
-#     def __str__(self) -> str:
-#         return f"{self.firstname} {self.lastname}"
-
-
-    
 
 class Library(models.Model):
     institution = models.ForeignKey(Institution, on_delete=models.SET_NULL, null=True)
@@ -83,15 +62,33 @@ class Category(models.Model):
         return self.name
 
 class Book(models.Model):
+    STATUS = (
+        ("Active", "Active"),
+        ('InActive', "InActive")
+    )
     title = models.CharField(max_length=200)
     pages = models.IntegerField()
     date_of_publication = models.DateField()
     description = models.CharField(max_length=200)
+    status = models.CharField(max_length=300, choices=STATUS, default="Active")
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
-    publisher = models.ForeignKey(Publisher, on_delete=models.SET_NULL, null=True)
-    library = models.ForeignKey(Library, on_delete=models.SET_NULL, null=True)
-    Language = models.ForeignKey(Language, on_delete=models.SET_NULL, null=True)
+    # publisher = models.ForeignKey(Publisher, on_delete=models.SET_NULL, null=True)
+    # library = models.ForeignKey(Library, on_delete=models.SET_NULL, null=True)
+    language = models.ForeignKey(Language, on_delete=models.SET_NULL, null=True)
     doc_type = models.ForeignKey(BookDocumentType, on_delete=models.SET_NULL, null=True)
     authors = models.ManyToManyField(Author)
 
-    
+    def __str__(self) -> str:
+        return self.title
+
+class BorrowedBook(models.Model):
+    STATUS = (
+        ("Issued", "Issued"),
+        ('Returned', "Returned"),
+    )
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    book = models.ForeignKey(Book, on_delete=models.SET_NULL, null=True)
+    date_issued = models.DateField()
+    return_date = models.DateField()
+    status = models.CharField(max_length=300, choices=STATUS, default="Issued")
+    late_return_fee = models.IntegerField()

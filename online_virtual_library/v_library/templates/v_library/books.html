@@ -1,0 +1,53 @@
+{% extends 'v_library/root.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="d-flex justify-content-between mt-5">
+        <h5 class="">Manage Books</h5>
+        <a href="{% url 'add_book' %}" class="btn btn-primary inline-block">Add Book</a>
+    </div>
+    
+    <hr>
+</div>
+<div class="container mt-5">
+    <table class="table_id display" >
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Pages</th>
+                <th>Date Of Publication</th>
+                <th>Category</th>
+                <th>Status</th>
+                <th>Language</th>
+                <th>Document Type</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            {% for book in books %}
+            <tr>
+                <td>{{book.title}}</td>
+                <td>{{book.pages}}</td>
+                <td>{{book.date_of_publication}}</td>
+                <td>{{book.category.name}}</td>
+                <td>
+                    {% if book.status == 'Active' %}
+                        <span class="btn bg-success text-white" >{{book.status}}</span>
+                    {% else %}
+                        <span class="btn bg-danger text-white" >{{book.status}}</span>
+                    {% endif %}
+                </td>
+                <td>{{book.language.language}}</td>
+                <td>{{book.doc_type.doc_type}}</td>
+                <td>
+                    <a href="{% url 'edit_book' book.id %}" class="btn btn-primary">Edit</a>
+                    <a href="{% url 'delete_book' book.id %}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+{% endblock %}

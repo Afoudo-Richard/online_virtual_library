@@ -1,0 +1,50 @@
+{% extends 'v_library/root.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="d-flex justify-content-between mt-5">
+        <h5 class="">Manage Issued Books</h5>
+        <a href="{% url 'add_issued_book' %}" class="btn btn-primary inline-block">Add Book</a>
+    </div>
+    
+    <hr>
+</div>
+<div class="container mt-5">
+    <table class="table_id display" >
+        <thead>
+            <tr>
+                <th>Book Title</th>
+                <th>Student Name</th>
+                <th>Student Email</th>
+                <th>Date Issued</th>
+                <th>Return Date</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            {% for borrowed_book in borrowed_books %}
+            <tr>
+                <td>{{borrowed_book.book.title}}</td>
+                <td>{{borrowed_book.user.username}}</td>
+                <td>{{borrowed_book.user.email}}</td>
+                <td>{{borrowed_book.date_issued}}</td>
+                <td>{{borrowed_book.return_date}}</td>
+                <td>
+                    {% if book.status == 'Returned' %}
+                        <span class="btn bg-success text-white" >{{borrowed_book.status}}</span>
+                    {% else %}
+                        <span class="btn bg-danger text-white" >{{borrowed_book.status}}</span>
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="{% url 'edit_issued_book' borrowed_book.id %}" class="btn btn-primary">Edit</a>
+                    <a href="{% url 'delete_issued_book' borrowed_book.id %}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

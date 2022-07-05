@@ -1,0 +1,34 @@
+{% extends 'v_library/root.html' %}
+
+{% block content %}
+<div class="container">
+    <h5 class="mt-5">Student Dashboard</h5>
+    <hr>
+</div>
+<div class="container mt-5">
+
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+            
+
+            <div class="col mt-2">
+                <div class="card p-3 d-flex flex-row justify-content-between align-items-center">
+                    <h5>Total Books Borrowed </h5>
+
+                    <h4>{{total_books}}</h4>
+                </div>
+            </div>
+
+            <div class="col mt-2">
+                <div class="card p-3 d-flex flex-row justify-content-between align-items-center">
+                    <h5>Total Categories</h5>
+
+                    <h4>{{total_categories}}</h4>
+                </div>
+            </div>
+
+            
+        </div>
+    </div>
+</div>
+{% endblock %}

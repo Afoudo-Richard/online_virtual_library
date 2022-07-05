@@ -6,6 +6,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
+          {% if request.user.is_staff %}
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{% url 'dashboard' %}">Dashboard</a>
           </li>
@@ -16,11 +17,31 @@
             <a class="nav-link" href="{% url 'authors' %}">Authors</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Books</a>
+            <a class="nav-link" href="{% url 'languages' %}">Languages</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'book_document_types' %}">Book/Document Type</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'books' %}">Books</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'issued_books' %}">Issue Books</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'register_user' %}">Register Student</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'users' %}">Users</a>
           </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'student_dashboard' %}">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'borrowed_books' %}">Borrowed books</a>
+          </li>
+          {% endif %}
           <!-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Dropdown link
