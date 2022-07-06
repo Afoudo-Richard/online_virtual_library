@@ -37,3 +37,9 @@ def admin_only(view_func):
         else :
             return redirect('student_dashboard')
     return wrapper_function
+
+
+
+
+
+    

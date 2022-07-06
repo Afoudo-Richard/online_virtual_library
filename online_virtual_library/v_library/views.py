@@ -1,6 +1,3 @@
-from multiprocessing import context
-from urllib import request
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -12,7 +9,6 @@ from .decorators import *
 from .forms import *
 
 # Create your views here.
-
 
 @unauthenticated_user
 def index(request):
@@ -94,15 +90,17 @@ def dashboard(request):
     }
     return render(request, 'v_library/dashboard.html', context)
 
+@login_required
+@allowed_users(allowed_roles = ['student'])
 def student_dashboard(request):
 
-    users = User.objects.all()
     books = Book.objects.all()
+    borrowed_books = BorrowedBook.objects.filter(user = request.user)
 
 
     context = {
-        'total_users': users.count(),
         'total_books': books.count(),
+        'total_borrored_books': borrowed_books.count()
     }
     return render(request, 'v_library/student_dashboard.html', context)
 
